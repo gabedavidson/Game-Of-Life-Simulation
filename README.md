@@ -15,6 +15,9 @@ Source files submitted:
 - Cell.cpp
 - Cell.h
 
+Additional files submitted:
+- infile.txt -> can use to import grid from a text file (see instructions)
+
 Compile or runtime errors: 
 - No known compile or runtime errors (unless the width/height is incorrect/not ints at the top of the infile)
 
@@ -29,6 +32,8 @@ Instructions:
 - make all
 - ./assignment3.exe
 - Follow instructions in console as prompted
+
+- If you want to import a grid from a text file, be ready to provide its path or bring it into the Assignment3 directory
 
 Comments:
 - I did not work with anyone on this project
