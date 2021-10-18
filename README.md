@@ -6,6 +6,7 @@ CPSC-350-3
 Assignment 2
 
 Source files submitted:
+- main.cpp
 - ProgramManager.cpp
 - ProgramManager.h
 - GridOfLife.cpp
@@ -17,6 +18,7 @@ Source files submitted:
 
 Additional files submitted:
 - infile.txt -> can use to import grid from a text file (see instructions)
+- Makefile
 
 Compile or runtime errors: 
 - No known compile or runtime errors (unless the width/height is incorrect/not ints at the top of the infile)
