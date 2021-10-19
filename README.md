@@ -28,7 +28,7 @@ Sources and references:
 - https://stackoverflow.com/a/936702
 - https://www.cplusplus.com/reference/cstdlib/rand/
 - https://stackoverflow.com/a/2544425
-- Joshua Anderson (Thanks!)
+- Joshua Anderson (Thanks!) (Helped me with resolving seg faults)
 
 Instructions:
 - make all
@@ -39,3 +39,4 @@ Instructions:
 
 Comments:
 - I did not work with anyone on this project
+- The program will stop when infinite oscillation is detected
