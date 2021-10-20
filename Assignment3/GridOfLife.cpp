@@ -26,6 +26,7 @@ Sources:
 
 using namespace std;
 
+// default constructor
 GridOfLife::GridOfLife(){
   width = 6;
   height = 6;
@@ -37,6 +38,7 @@ GridOfLife::GridOfLife(){
   this->populateEmptyGrid();
 }
 
+// overloaded constructor
 GridOfLife::GridOfLife(int w, int h, float d){
   width = w;
   height = h;
@@ -48,6 +50,7 @@ GridOfLife::GridOfLife(int w, int h, float d){
   this->populateEmptyGrid();
 }
 
+// destructor
 GridOfLife::~GridOfLife(){
   for (int i = 0; i < width; ++i){
     delete[] grid[i];
@@ -55,6 +58,7 @@ GridOfLife::~GridOfLife(){
   delete[] grid;
 }
 
+// populates the empty 2D array with inactive cells
 void GridOfLife::populateEmptyGrid(){
   for (int i = 0; i < width; ++i){
     for (int j = 0; j < height; ++j){
@@ -63,6 +67,7 @@ void GridOfLife::populateEmptyGrid(){
   }
 }
 
+// randomly generates coordinates and activates cells at those coordinates
 void GridOfLife::generateRandomAssignment(){ // #2
   srand(time(0));
 
@@ -72,15 +77,18 @@ void GridOfLife::generateRandomAssignment(){ // #2
   for (int i = 0; i < populationDensity; ++i){
     x = rand() % (width);
     y = rand() % (height);
+    // if that cell is not already active
     if (!grid[x][y].isActiveCell()){
       grid[x][y].changeStatus(true);
     }
+    // if it is already active, decrement i
     else {
       --i;
     }
   }
 }
 
+// counts the neighbors around a cell at certain coordinates following classic rules
 int GridOfLife::checkNeighborsAround(int x, int y){
   int count = 0;
 
@@ -120,6 +128,7 @@ int GridOfLife::checkNeighborsAround(int x, int y){
   return count;
 }
 
+// checks if coordinates x and y are within the grid, and if so if the cell there is active
 bool GridOfLife::cellIsOccupied(int x, int y){
   if (x >= 0 && y >= 0 && x < width && y < height){
     if (grid[x][y].isActiveCell()){
@@ -129,14 +138,17 @@ bool GridOfLife::cellIsOccupied(int x, int y){
   return false;
 }
 
+// returns width (rows) of grid
 int GridOfLife::getWidth(){
   return width;
 }
 
+// returns height (cols) of grid
 int GridOfLife::getHeight(){
   return height;
 }
 
+// checks whether two GridOfLife objects are equal given their grids
 bool GridOfLife::checkEquality(GridOfLife* _grid){
   for (int i = 0; i < width; ++i){
     for (int j = 0; j < height; ++j){
@@ -159,10 +171,12 @@ void GridOfLife::passGrid(GridOfLife* _grid){
   }
 }
 
+// changes the status of cell at certain coordinates
 void GridOfLife::editGrid(int index_w, int index_h, bool changeTo){
   grid[index_w][index_h].changeStatus(changeTo);
 }
 
+// prints the grid in a nice format
 void GridOfLife::printGrid(){
   for (int i = 0; i < width; ++i){
     for (int j = 0; j < height; ++j){
@@ -177,10 +191,12 @@ void GridOfLife::printGrid(){
   }
 }
 
+// returns the grid object itself
 Cell** GridOfLife::getGrid(){
   return grid;
 }
 
+// returns whether all cells in the grid are inactive or not
 bool GridOfLife::gridIsEmpty(){
   for (int i = 0; i < width; ++i){
     for (int j = 0; j < height; ++j){
