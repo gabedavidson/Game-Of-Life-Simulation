@@ -37,8 +37,20 @@ void BoundaryModeManager::changeMode(char m){
 int BoundaryModeManager::checkMirrorNeighborsAround(int x, int y, GridOfLife* grid, int w, int h){
   int count = 0;
 
-  if (x == w || x == 0 || y == h || y == 0){ // is in corner
-    ++count;
+  // if is occupied and in corner
+  if ((x == 0 && y == 0) || (x == 0 && y == h - 1) || (x == w - 1 && y == 0) || (x == w - 1 && y == h - 1)){
+    if (grid->cellIsOccupied(x, y)){
+      // cout << "is in corner" << endl;
+      ++count;
+    }
+  }
+
+  // if is occupied and against wall, reflects itself
+  if (x == 0 || x == w - 1 || y == 0 || y == h - 1){
+    if (grid->cellIsOccupied(x, y)){
+      // cout << "reflects itself" << endl;
+      ++count;
+    }
   }
 
   if (y == 0){ // is along top wall
@@ -75,10 +87,6 @@ int BoundaryModeManager::checkMirrorNeighborsAround(int x, int y, GridOfLife* gr
     if (grid->cellIsOccupied(0, x + 1)){ // above c
       ++count;
     }
-  }
-
-  if (count > 0){
-    ++count; // if count > 0 then c has mirrored neighbors, therefore must mirror itself
   }
 
   return count;
