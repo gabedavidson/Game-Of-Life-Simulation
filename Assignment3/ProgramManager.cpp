@@ -26,6 +26,7 @@ Sources:
 
 using namespace std;
 
+// default constructor
 ProgramManager::ProgramManager(){
   BoundaryModeManager modeManager;
 
@@ -34,14 +35,16 @@ ProgramManager::ProgramManager(){
   enterBetweenGens = false;
 
   outfile = "";
-} // default constructor
+}
 
+// destructor
 ProgramManager::~ProgramManager(){ // destructor
   delete activeGenGrid;
   delete nextGenGrid;
   delete pastGenGrid;
 }
 
+// prompts the user for pertinent information and prepares the environment accordingly
 void ProgramManager::doInitialPrompts(){
   char res;
   string _res;
@@ -130,6 +133,7 @@ void ProgramManager::doInitialPrompts(){
   cin.get();
 }
 
+// creates a GridOfLife object and populates its grid by crossrefering a given file
 void ProgramManager::getGridFromFile(string inFile){
   //
   ifstream reader;
@@ -163,6 +167,7 @@ void ProgramManager::getGridFromFile(string inFile){
   activeGenGrid->printGrid();
 }
 
+// writes the active/inactive status of cells within the grid to a given file
 void ProgramManager::writeGridToFile(ofstream& writer){
   writer << numGeneration <<"\n"; // write generation number
 
@@ -180,6 +185,7 @@ void ProgramManager::writeGridToFile(ofstream& writer){
   writer << "\n\n";
 }
 
+// starts and ends program, including neighbor checking and generating results of neighbor checking
 void ProgramManager::run(){
   doInitialPrompts();
 
