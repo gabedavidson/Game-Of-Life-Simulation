@@ -22,6 +22,7 @@ Additional files submitted:
 
 Compile or runtime errors: 
 - No known compile or runtime errors (unless the width/height is incorrect/not ints at the top of the infile)
+- Possible incorrect algorithm in mirror mode neighbor detection
 
 Sources and references:
 - https://www.softwaretestinghelp.com/cpp-sleep/
