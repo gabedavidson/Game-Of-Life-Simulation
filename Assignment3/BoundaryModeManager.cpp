@@ -17,22 +17,27 @@ Sources:
 
 using namespace std;
 
+// default constructor, classic mode
 BoundaryModeManager::BoundaryModeManager(){
   mode = 'c';
 }
 
+// destructor
 BoundaryModeManager::~BoundaryModeManager(){
   //
 }
 
+// gets the current mode represented as a char
 char BoundaryModeManager::getMode(){
   return mode;
 }
 
+// change the mode
 void BoundaryModeManager::changeMode(char m){
   mode = m;
 }
 
+// counts the number of neighbors present as mirrored neighbors
 // this only accounts for mirrored neighbors -> used in conjunction with grid->checkNeighborsAround(...)
 int BoundaryModeManager::checkMirrorNeighborsAround(int x, int y, GridOfLife* grid, int w, int h){
   int count = 0;
@@ -92,6 +97,7 @@ int BoundaryModeManager::checkMirrorNeighborsAround(int x, int y, GridOfLife* gr
   return count;
 }
 
+// counts the number of neighbors present given a doughnut shaped grid
 // this only accounts for doughnut neighbors -> used in conjunction with grid->checkNeighborsAround(...)
 int BoundaryModeManager::checkDoughnutNeighborsAround(int x, int y, GridOfLife* grid, int w, int h){
   int count = 0;
